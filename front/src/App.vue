@@ -1,10 +1,18 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <HomeView />
 </template>
+
+<script>
+import HomeView from "@/views/home";
+
+export default {
+  name: "App",
+  components: {
+    HomeView
+  },
+  mounted() {}
+}
+</script>
 
 <style lang="scss">
 #app {
