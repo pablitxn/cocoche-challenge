@@ -9,12 +9,11 @@ export default class Register {
 		@Inject('logger') private logger,
 	) {}
 
-	public async createUser(payload) {
-		const { body: newUser } = payload
+	public async getUsers() {
 		try {
-			const userRegistered = await userModel.create(newUser)
+			const usersList = await userModel.find({})
 
-			return userRegistered
+			return usersList
 		} catch (err) {
 			this.logger.error(err)
 			throw err
