@@ -1,11 +1,13 @@
 // Router
 import { Router } from 'express'
 // Routes
-// import ecommerce from './routes/ecommerce'
+import register from './routes/auth/register'
+import car from './routes/rent-cars/car'
 
 export default () => {
 	const app = Router()
-	// ecommerce(app)
+	register(app)
+	car(app)
 
 	return app
 }

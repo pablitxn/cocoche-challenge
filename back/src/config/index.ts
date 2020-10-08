@@ -16,6 +16,8 @@ export default {
 	databaseURL: process.env.MONGODB_URI,
 	// Images S3 Storage
 	imagesURL: process.env.URL_S3,
+	// Cocoche API
+	cococheAPI: process.env.URL_API,
 	// Logs dev
 	logs: {
 		level: process.env.LOG_LEVEL || 'silly'

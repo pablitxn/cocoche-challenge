@@ -22,6 +22,7 @@
   "homepage": "https://gitlab.com/ibis-dev/interview-pablo-coronel#readme",
   "dependencies": {
     "@types/cors": "^2.8.7",
+    "axios": "^0.20.0",
     "body-parser": "^1.18.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

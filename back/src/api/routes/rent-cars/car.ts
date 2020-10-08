@@ -1,7 +1,7 @@
 // Express
 import { Router, Request, Response } from 'express'
 // Services
-import services from '../../../services/rent-cars/'
+import services from "../../../services/rent-cars/car"
 // Dependency Injection
 import { Container } from 'typedi'
 
@@ -12,32 +12,35 @@ export default (app: Router) => {
 	app.use('/', route)
 
 	route.get('/get_all', async (req: Request, res: Response) => {
-		// try {
-		// 	const offerServiceInstance = Container.get(OfferService)
-		// 	const offers = await offerServiceInstance.getOffers()
+		try {
+			const serviceInstance = Container.get(services)
+			const cars = await serviceInstance.getFordCars()
 
-		// 	res.status(200).json({
-		// 		data: offers,
-		// 		message: 'offers listed'
-		// 	})
-		// } catch (err) {
-		// 	res.status(500).send(err)
-		// }
+			res.status(200).json({
+				data: cars,
+				message: 'all cars avaible'
+			})
+		} catch (err) {
+			res.status(500).send(err)
+		}
 	})
 
 	route.get('/get_ford_cars', async (req: Request, res: Response) => {
-		// try {
-		// 	const offerServiceInstance = Container.get(OfferService)
-		// 	const createdOffer = await offerServiceInstance.createOffer(req)
+		try {
+			const serviceInstance = Container.get(services)
+			const cars = await serviceInstance.getFordCars()
 
-		// 	res.status(201).json({
-		// 		data: createdOffer,
-		// 		message: 'offer created'
-		// 	})
-		// } catch (err) {
-		// 	console.log(err)
-		// 	throw err
-		// }
+			/**
+			 * filtrar autos ford
+			 */
+
+			res.status(200).json({
+				data: cars,
+				message: 'all cars avaible'
+			})
+		} catch (err) {
+			res.status(500).send(err)
+		}
 	})
 
 }
