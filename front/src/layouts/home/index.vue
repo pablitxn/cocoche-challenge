@@ -1,23 +1,7 @@
 <template>
   <a-layout id="components-layout-demo-top" class="layout">
     <a-layout-header>
-      <div class="logo" />
-      <a-menu
-        theme="dark"
-        mode="horizontal"
-        :default-selected-keys="['2']"
-        :style="{ lineHeight: '64px' }"
-      >
-        <a-menu-item key="1">
-          nav 1
-        </a-menu-item>
-        <a-menu-item key="2">
-          nav 2
-        </a-menu-item>
-        <a-menu-item key="3">
-          nav 3
-        </a-menu-item>
-      </a-menu>
+      <Navbar />
     </a-layout-header>
     <a-layout-content style="padding: 0 50px">
       <a-breadcrumb style="margin: 16px 0">
@@ -36,11 +20,14 @@
 </template>
 
 <script>
+import Navbar from "../../components/navbar";
 
-// export default {
-//   name: "HomeLayout",
-
-//   }
+export default {
+  name: "HomeLayout",
+  components: {
+    Navbar
+  }
+}
 </script>
 
 <style>
