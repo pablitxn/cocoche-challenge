@@ -7,6 +7,7 @@
       <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
         <Hero />
         <About />
+        <Gallery />
       </div>
     </a-layout-content>
     <a-layout-footer style="text-align: center">
@@ -19,13 +20,15 @@
 import Navbar from "../../components/navbar";
 import Hero from "../../components/hero";
 import About from "../../components/about";
+import Gallery from "../../components/gallery";
 
 export default {
   name: "HomeLayout",
   components: {
     Navbar,
     Hero,
-    About
+    About,
+    Gallery
   }
 }
 </script>

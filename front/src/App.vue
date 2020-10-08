@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import HomeView from "@/views/home";
+import HomeView from "./views/home";
 
 export default {
   name: "App",
