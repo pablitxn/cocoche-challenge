@@ -25,9 +25,9 @@ export default {
   display: flex;
   gap: 5rem;
   flex-direction: row;
-  background-color: white;
+    background: #f1eee9;
   place-content: center;
-  margin: 2rem;
+  padding: 2rem;
 }
 
 </style>

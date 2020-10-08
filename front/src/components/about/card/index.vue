@@ -15,8 +15,8 @@
 
   .card{
     background-color: whitesmoke;
-    width: 300px;
-    height: 400px;
+    width: 360px;
+    height: 420px;
     display: flex;
     flex-direction: column;
     align-items: center;

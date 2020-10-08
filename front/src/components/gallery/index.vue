@@ -1,19 +1,29 @@
 <template>
   <div class="gallery">
-    <Card />
-    <Card />
-    <Card />
-    <Card />
+    <header class="gallery__title">
+      <h1>Destacados</h1>
+    </header>
+    <section class="gallery__content">
+      <Cards :cars="cars" />
+    </section>
+    <div>
+      <!-- <Pagination :cars="cars" /> -->
+    </div>
   </div>
 </template>
 
 <script>
-import Card from "./card"
+import Cards from "./cards"
+// import Pagination from "./pagination"
 
 export default {
   name: "Gallery",
   components: {
-    Card
+    Cards,
+  },
+  props:['cars'],
+  data () {
+    return {}
   }
 }
 </script>
@@ -22,12 +32,24 @@ export default {
 
   .gallery{
     display: flex;
-    flex-direction: row;
-    gap: 5rem;
+    flex-direction: column;
     justify-content: center;
-    /* justify-content: space-around; */
-    width: 100%;
+    background-color:#F4F4F4;
+    padding: 2rem 0;
 
+    &__title {
+      border: 2px solid black;
+    }
+
+    &__content {
+      /* display: flex;
+      flex-direction: row;
+      place-content: center;
+      flex-wrap: wrap;
+      gap: 5rem; */
+      display: grid;
+      grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr;
+    }
   }
 
 </style>

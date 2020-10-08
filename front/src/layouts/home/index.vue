@@ -7,7 +7,7 @@
       <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
         <Hero />
         <About />
-        <Gallery />
+        <Gallery :cars="cars"/>
       </div>
     </a-layout-content>
     <a-layout-footer style="text-align: center">
@@ -29,7 +29,8 @@ export default {
     Hero,
     About,
     Gallery
-  }
+  },
+  props: ['cars']
 }
 </script>
 
