@@ -24,7 +24,7 @@
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 .search {
   display: flex;
@@ -43,13 +43,13 @@
   &__form-input {
     width:100%;
 
-    span {
+    & span {
       display: flex;
-      justify-content: start;
+      justify-content: flex-start;
       font-size: 0.7rem;
       font-weight: 600;
     }
-    input {
+    & input {
       width:100%;
       height: 2rem;
       border: none;

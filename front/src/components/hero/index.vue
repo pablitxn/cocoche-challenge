@@ -22,7 +22,7 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .hero {
     background-image: url(https://cocoche.com.ar/bg-base-plain.jpg);
     height: 40vh;

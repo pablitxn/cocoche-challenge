@@ -1,48 +1,45 @@
 <template>
-  <div class="card">
-    <!-- <img v-bind:src="data.imageUrl" alt="foto-del-anuncio" class="card__image"/> -->
-    <div class="card__brief-description">
-      <img src="https://www.flaticon.es/svg/static/icons/svg/1672/1672795.svg"  alt="icono-puerta" class="card__icon">
-      <span>puertas</span>
-      <img src="https://www.flaticon.com/svg/static/icons/svg/3267/3267101.svg"  alt="icono-combustible" class="card__icon" />
-      <span>nafta</span>
+  <div class="gallery-card">
+    <img :src="data.imageUrl" alt="foto-del-anuncio" class="gallery-card__image"/>
+    <div class="gallery-card__brief-description">
+      <img src="https://www.flaticon.es/svg/static/icons/svg/1672/1672795.svg"  alt="icono-puerta" class="gallery-card__icon">
+      <span>{{ data.doors }}&nbsp;Puertas</span>
+      <img src="https://www.flaticon.com/svg/static/icons/svg/3267/3267101.svg"  alt="icono-combustible" class="gallery-card__icon" />
+      <span>{{ data.fuelType }}</span>
     </div>
-    <div class="card__full-description">
-      <h3 class="card__price">$&nbsp;100</h3>
-      <span class="card__car-info">FIAT FIORINO FURGON 1,4 EVO TOP</span>
-      <span class="card__location-info">Villa Carlos Paz, Córdoba, Argentina</span>
+    <div class="gallery-card__full-description">
+      <h3 class="gallery-card__price">$&nbsp;{{data.cost}}</h3>
+      <span class="gallery-card__car-info">{{ data.title.toUpperCase() }}</span>
+      <span class="gallery-card__location-info">{{ data.placeDescription }}</span>
     </div>
   </div>
 </template>
 
 <script>
-
-
-
 export default {
+  name: "Card",
   props: {
-    car: Object
-  },
-  data () {
-    console.log("card scope", this.car)
-
-    return{
-
+    data: {
+      type: Object
     }
-  }
+  },
 }
-
 </script>
 
-<style lang="scss" scoped>
-
-.card{
+<style lang="scss">
+.gallery-card{
   background-color: white;
-  width: 420px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.445);
 
   &__image{
     width: 100%;
+    height: 420px;
+    border-radius: 10px 10px 0 0;
     background-color: gray;
+    object-fit: cover;
+    margin:0;
   }
 
   &__icon {
@@ -52,7 +49,7 @@ export default {
 
   &__brief-description{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding-left: 1rem;
     height: 30px;
@@ -63,9 +60,8 @@ export default {
 
   &__full-description{
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     flex-direction: column;
-    height: 100%;
     padding: 0 1rem 1rem 1rem;
   }
 

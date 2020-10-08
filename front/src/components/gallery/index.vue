@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
   .gallery{
     display: flex;
@@ -38,17 +38,20 @@ export default {
     padding: 2rem 0;
 
     &__title {
-      border: 2px solid black;
+
+      h1{
+        display: inline;
+        padding: 0.2rem 2rem;
+        border: 8px double rgba(0, 0, 0, 0.459);
+      }
     }
 
     &__content {
-      /* display: flex;
+      display: flex;
       flex-direction: row;
       place-content: center;
       flex-wrap: wrap;
-      gap: 5rem; */
-      display: grid;
-      grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr;
+      gap: 5rem;
     }
   }
 
