@@ -14,10 +14,10 @@ export default (app: Router) => {
 	route.get('/get_all', async (req: Request, res: Response) => {
 		try {
 			const serviceInstance = Container.get(services)
-			const cars = await serviceInstance.getFordCars()
+			const { carList } = await serviceInstance.getAllCars()
 
 			res.status(200).json({
-				data: cars,
+				data: carList,
 				message: 'all cars avaible'
 			})
 		} catch (err) {
@@ -28,15 +28,11 @@ export default (app: Router) => {
 	route.get('/get_ford_cars', async (req: Request, res: Response) => {
 		try {
 			const serviceInstance = Container.get(services)
-			const cars = await serviceInstance.getFordCars()
-
-			/**
-			 * filtrar autos ford
-			 */
+			const fordCars = await serviceInstance.getFordCars()
 
 			res.status(200).json({
-				data: cars,
-				message: 'all cars avaible'
+				data: fordCars,
+				message: 'ford cars'
 			})
 		} catch (err) {
 			res.status(500).send(err)
