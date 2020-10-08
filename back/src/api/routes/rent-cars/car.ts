@@ -14,7 +14,7 @@ export default (app: Router) => {
 	route.get('/get_all', async (req: Request, res: Response) => {
 		try {
 			const serviceInstance = Container.get(services)
-			const { carList } = await serviceInstance.getAllCars()
+			const carList = await serviceInstance.getAllCars()
 
 			res.status(200).json({
 				data: carList,

@@ -5,7 +5,7 @@ import axios from 'axios'
 // Configs
 import config from "../../config"
 // Types
-import { ICarList } from "../../interfaces/rent-cars"
+import { ICar } from "../../interfaces/rent-cars"
 
 @Service()
 export default class Car {
@@ -14,11 +14,18 @@ export default class Car {
 	) {}
 
 	public async getAllCars() {
-    const { cococheAPI: API_URL } = config;
+    const { cococheAPI: API_URL, imagesURL: API_IMAGES } = config;
 		try {
-			const { data: allCars }: ICarList = await axios.get(API_URL)
+			const { data: { carList } } = await axios.get(API_URL)
+			/** Adding ImageUrl */
+			const dataFormated: ICar[] = carList.map((car) => {
+				return {
+					...car,
+					imageUrl:`${API_IMAGES}/${car.url}`
+				}
+			})
 
-			return allCars
+			return dataFormated
 		} catch (err) {
 			this.logger.error(err)
 			throw err
@@ -26,9 +33,9 @@ export default class Car {
 	}
 
 	public async getFordCars() {
-    const { cococheAPI: API_URL } = config;
+    const { cococheAPI: API_URL, imagesURL: API_IMAGES } = config;
 		try {
-			const { data: { carList } }: ICarList = await axios.get(API_URL)
+			const { data: { carList } } = await axios.get(API_URL)
 			/** Filter for Brand */
 			const fordCars = carList.filter((car) => {
 				const { brandDescription } = car;
@@ -36,8 +43,15 @@ export default class Car {
 					return car
 				}
 			})
+			/** Adding ImageUrl */
+			const dataFormated: ICar[] = fordCars.map((car) => {
+				return {
+					...car,
+					imageUrl:`${API_IMAGES}/${car.url}`
+				}
+			})
 
-			return fordCars
+			return dataFormated as ICar[]
 		} catch (err) {
 			this.logger.error(err)
 			throw err
