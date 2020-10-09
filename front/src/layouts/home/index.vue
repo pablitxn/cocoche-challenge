@@ -11,6 +11,8 @@
     <footer class="footer">
       Cocoches 2020
     </footer>
+
+    <Modal />
   </div>
 </template>
 
@@ -19,6 +21,9 @@ import Navbar from "../../components/navbar";
 import Hero from "../../components/hero";
 import About from "../../components/about";
 import Gallery from "../../components/gallery";
+// import Register from "../../components/auth/register"
+// import LogIn from "../../components/auth/login"
+import Modal from "../../components/_shared/modal"
 
 export default {
   name: "HomeLayout",
@@ -26,7 +31,8 @@ export default {
     Navbar,
     Hero,
     About,
-    Gallery
+    Gallery,
+    Modal,
   },
   props: ['cars']
 }
