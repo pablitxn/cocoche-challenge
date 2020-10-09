@@ -14,7 +14,7 @@ const Services = {
       const URL = `${BASE_URL}/create_user`
       const response = await fetch(URL, configs);
       const userRegistered = await response.json();
-      console.log(userRegistered)
+      console.log("Se registró el usuario correctamente. Response:", userRegistered.data )
 
       return userRegistered
     } catch (err) {

@@ -12,6 +12,7 @@
         />
         <input
           v-model="phone"
+          type="number"
           class="register__input"
           placeholder="Phone"
         />
@@ -24,18 +25,21 @@
         <input
         v-model="email"
         id="email"
-        @blur="ValidateEmail"
+        @blur="validateEmail"
         class="register__input" placeholder="Correo electrónico"
         />
         <input
         id="password"
         v-model="password"
+        @blur="validatePassword"
         type="password"
         class="register__input" placeholder="Contraseña"
         />
         <input
         v-model="repeatPass"
+        id="password"
         type="password"
+        @blur="validatePassword"
         class="register__input"
         placeholder="Repetir contraseña"
         />
@@ -57,15 +61,13 @@ export default {
   props: ['modalState','handleRegister'],
   methods: {
     handleSubmit: function() {
-      const { handleRegister } = this;
-      if(this.password === this.repeatPass && this.ValidateEmail(this.password)){
+      const { password, repeatPass, validateEmail,  } = this;
+      if(password === repeatPass && validateEmail()){
         this.handleRegister({
           name: this.name,
-          phone: this.phone,
+          phone: parseInt(this.phone, 10),
           email: this.email
         })
-      } else {
-        document.querySelector("#password").style.borderBottom = "1px solid red";
       }
 
       this.modalState = {
@@ -75,9 +77,8 @@ export default {
         alert: true,
         alertType: "user-created"
       }
-
     },
-    ValidateEmail() {
+    validateEmail() {
       const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/
 
       if (this.email == null || this.email === "") {
@@ -89,6 +90,13 @@ export default {
       } else {
         document.querySelector("#email").style.borderBottom = "1px solid rgba(0, 0, 0, 0.1)";
         return true
+      }
+    },
+    validatePassword() {
+      if(this.password === this.repeatPass){
+        document.querySelector("#password").style.borderBottom = "1px solid rgba(0, 0, 0, 0.1)";
+      } else {
+        document.querySelector("#password").style.borderBottom = "1px solid red";
       }
     }
   }

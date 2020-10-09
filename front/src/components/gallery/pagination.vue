@@ -38,7 +38,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   background-color: #28b5f67e;
-  padding: 1rem 1rem 3rem;
+  padding: 1rem;
 
   & ul {
     list-style: none;

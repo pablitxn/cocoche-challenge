@@ -13,6 +13,7 @@
     </footer>
 
     <Modal :modalState="modalState" :handleRegister="handleRegister"/>
+    <Alert :modalState="modalState"/>
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import Hero from "../components/hero/hero";
 import About from "../components/about/about";
 import Gallery from "../components/gallery/gallery";
 import Modal from "../components/_shared/auth-modal";
+import Alert from "../components/_shared/alert";
 
 export default {
   name: "HomeLayout",
@@ -31,6 +33,7 @@ export default {
     About,
     Gallery,
     Modal,
+    Alert
   },
   props: ['cars', 'handleRegister'],
   data(){
@@ -39,8 +42,8 @@ export default {
         open: false,
         register: false,
         login: false,
-        alert: false,
-        alertType: ""
+        alert: true,
+        alertType: "email-used"
       },
     }
   }

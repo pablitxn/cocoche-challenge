@@ -1,8 +1,8 @@
 <template>
-  <div v-bind="modalState" v-if="modalState.open" class="paper">
+  <div v-bind="modalState" v-if="modalState.open" class="paper-modal">
     <div class="modal">
       <div class="modal__action">
-        <span @click.prevent="handleModal">X</span>
+        <span @click.prevent="closeModal">X</span>
       </div>
       <div>
         <LoginForm v-bind="modalState" v-if="modalState.login"/>
@@ -35,13 +35,13 @@ export default {
 </script>
 
 <style lang="scss">
-  .paper {
+  .paper-modal {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.432);
     position: fixed;
     top:0;
-    z-index: 4;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
