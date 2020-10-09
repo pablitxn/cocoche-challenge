@@ -6,24 +6,34 @@
     <section class="gallery__content">
       <Cards :cars="cars" />
     </section>
-    <div>
-      <!-- <Pagination :cars="cars" /> -->
+    <div class="gallery__pagination">
+      <Pagination :pagination="pagination" :cars="cars" />
     </div>
   </div>
 </template>
 
 <script>
 import Cards from "./cards"
-// import Pagination from "./pagination"
+import Pagination from "./pagination"
 
 export default {
   name: "Gallery",
   components: {
     Cards,
+    Pagination
   },
   props:['cars'],
   data () {
-    return {}
+    const elementsPerPage = 8;
+    const totalPages = Math.ceil(this.cars.length / elementsPerPage);
+
+    return {
+      pagination: {
+        currentPage: 1,
+        prevPage: 0,
+        totalPages
+      },
+    }
   }
 }
 </script>
@@ -52,6 +62,10 @@ export default {
       place-content: center;
       flex-wrap: wrap;
       gap: 5rem;
+    }
+
+    &__pagination {
+
     }
   }
 
