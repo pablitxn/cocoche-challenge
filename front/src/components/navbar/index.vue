@@ -6,14 +6,32 @@
       <button class="navbar__action">Buscar un auto</button>
       <button class="navbar__action">Buscar en el mapa</button>
       <button class="navbar__action">Ayuda</button>
-      <button class="navbar__action">Registrate</button>
-      <button class="navbar__action">Iniciar sesión</button>
+      <button @click.prevent="handleModal" class="navbar__action" name="register" >Registrate</button>
+      <button @click.prevent="handleModal" class="navbar__action" name="login" >Iniciar sesión</button>
     </div>
   </div>
 </template>
 
 <script>
-/** */
+export default {
+  name: "Navbar",
+  props: ['modalState'],
+  methods: {
+    handleModal: function(event) {
+      const { name } = event.target
+      switch(name) {
+        case "login":
+          this.modalState.open = true;
+          this.modalState.login = true;
+          return
+        case "register":
+          this.modalState.open = true;
+          this.modalState.register = true;
+          return
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss">
@@ -43,6 +61,7 @@
     font-weight: 600;
     place-items: center;
     padding: 1.5rem;
+    cursor: pointer;
 
 
     &--highlighted{

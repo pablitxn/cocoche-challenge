@@ -26,7 +26,7 @@
 <style lang="scss">
 
   .register {
-    padding: 0 2rem;
+    padding: 1rem 2rem;
 
     &__header {
       display: flex;

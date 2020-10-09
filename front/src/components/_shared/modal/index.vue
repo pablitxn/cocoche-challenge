@@ -1,13 +1,12 @@
 <template>
-  <div class="paper">
+  <div v-bind="modalState" v-if="modalState.open" class="paper">
     <div class="modal">
-      <div>
-        <span>cerrar</span>
+      <div class="modal__action">
+        <span @click.prevent="handleModal">X</span>
       </div>
       <div>
-        <!-- <LoginForm :v-if="login"/> -->
-        <!-- <RegisterForm :v-if="register"/> -->
-        <RegisterForm />
+        <LoginForm v-bind="modalState" v-if="modalState.login"/>
+        <RegisterForm v-bind="modalState" v-if="modalState.register"/>
       </div>
     </div>
   </div>
@@ -23,12 +22,13 @@ export default {
     LoginForm,
     RegisterForm
   },
-  props: {
-    login: {
-      type: Boolean
-    },
-    register: {
-      type: Boolean
+  props: ['modalState'],
+  methods: {
+    handleModal: function(){
+      this.modalState.open = false;
+      this.modalState.register = false;
+      this.modalState.login = false;
+      return
     }
   }
 }
@@ -51,8 +51,20 @@ export default {
 
   .modal {
     width: 480px;
-    height: 600px;
     background-color: #fafafa;
+
+    &__action {
+      display: flex;
+      justify-content: end;
+      font-weight: 600;
+      color: gray;
+      margin: 0 2rem 0 0;
+      padding-top: 1rem;
+
+      & span{
+        cursor: pointer;
+      }
+    }
   }
 
 </style>
