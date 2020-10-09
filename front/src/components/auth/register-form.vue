@@ -4,12 +4,12 @@
       <h1 class="register__title">Cuenta personal</h1>
       <button class="register__action--primary">Cambiar a empresa</button>
     </header>
-    <form noValidate autoComplete="off" class="register__form">
-        <input class="register__input" placeholder="Nombre"/>
-        <input class="register__input" placeholder="Apellido"/>
-        <input class="register__input--date" type="datetime" placeholder="&nbsp;📅&nbsp;Fecha no seleccionada"/>
-        <input class="register__input" placeholder="Contraseña"/>
-        <input class="register__input" placeholder="Repetir contraseña" />
+    <form v-on:submit.prevent="handleSubmit" noValidate autoComplete="off" class="register__form">
+        <input v-model="name" class="register__input" placeholder="Nombre"/>
+        <input v-model="phone" class="register__input" placeholder="Phone"/>
+        <input v-model="date" class="register__input--date" type="datetime" placeholder="&nbsp;📅&nbsp;Fecha no seleccionada"/>
+        <input v-model="password" class="register__input" placeholder="Contraseña"/>
+        <input v-model="repeatPass" class="register__input" placeholder="Repetir contraseña" />
       <div class="register__actions">
         <button class="register__action--secondary">Volver</button>
         <button type="submit" class="register__action--primary">Crear cuenta</button>
@@ -20,7 +20,26 @@
 </template>
 
 <script>
-/** */
+export default {
+  name: "Register",
+  props: {
+    onSubmit: Function
+  },
+  methods: {
+    handleSubmit: function(event) {
+      if(this.password === this.repeatPass){
+        this.onSubmit({
+          name: this.name,
+          phone: this.phone,
+          date: this.date,
+          password: this.password
+        })
+      } else {
+        /** error de password */
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss">

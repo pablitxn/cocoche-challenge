@@ -12,7 +12,7 @@
       Cocoches 2020
     </footer>
 
-    <Modal :modalState="modalState"/>
+    <Modal :modalState="modalState" :handleRegister="handleRegister"/>
   </div>
 </template>
 
@@ -40,6 +40,11 @@ export default {
         register: false,
         login: false
       }
+    }
+  },
+  methods: {
+    handleRegister: function(payload) {
+      console.log(payload)
     }
   }
 }

@@ -6,7 +6,7 @@
       </div>
       <div>
         <LoginForm v-bind="modalState" v-if="modalState.login"/>
-        <RegisterForm v-bind="modalState" v-if="modalState.register"/>
+        <RegisterForm v-bind="modalState" v-if="modalState.register" :onSubmit="handleRegister"/>
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@ export default {
     LoginForm,
     RegisterForm
   },
-  props: ['modalState'],
+  props: ['modalState', 'handleRegister'],
   methods: {
     handleModal: function(){
       this.modalState.open = false;
