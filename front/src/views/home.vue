@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import HomeLayout from "../../layouts/home";
+import HomeLayout from "../layouts/home";
 import rentCarServices from "@/services/rent-car";
 // import authServices from "@/services/auth";
 
@@ -44,7 +44,6 @@ export default {
     getCars();
 
   }
-  // mounted() {}
 }
 </script>
 

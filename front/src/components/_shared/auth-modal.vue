@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import LoginForm from "../../auth/login"
-import RegisterForm from "../../auth/register"
+import LoginForm from "../auth/login-form";
+import RegisterForm from "../auth/register-form";
 
 export default {
   name: "modal",
@@ -32,11 +32,9 @@ export default {
     }
   }
 }
-
 </script>
 
 <style lang="scss">
-
   .paper {
     width: 100vw;
     height: 100vh;
@@ -55,7 +53,7 @@ export default {
 
     &__action {
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
       font-weight: 600;
       color: gray;
       margin: 0 2rem 0 0;
@@ -66,5 +64,4 @@ export default {
       }
     }
   }
-
 </style>

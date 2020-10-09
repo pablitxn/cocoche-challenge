@@ -24,7 +24,6 @@
 </script>
 
 <style lang="scss">
-
   .register {
     padding: 1rem 2rem;
 
@@ -98,5 +97,4 @@
       }
     }
   }
-
 </style>

@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import Navbar from "../../components/navbar";
-import Hero from "../../components/hero";
-import About from "../../components/about";
-import Gallery from "../../components/gallery";
-import Modal from "../../components/_shared/modal"
+import Navbar from "../components/navbar/navbar";
+import Hero from "../components/hero/hero";
+import About from "../components/about/about";
+import Gallery from "../components/gallery/gallery";
+import Modal from "../components/_shared/auth-modal";
 
 export default {
   name: "HomeLayout",
