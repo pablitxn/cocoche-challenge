@@ -5,14 +5,46 @@
       <button class="register__action--primary">Cambiar a empresa</button>
     </header>
     <form v-on:submit.prevent="handleSubmit" noValidate autoComplete="off" class="register__form">
-        <input v-model="name" class="register__input" placeholder="Nombre"/>
-        <input v-model="phone" class="register__input" placeholder="Phone"/>
-        <input v-model="date" class="register__input--date" type="datetime" placeholder="&nbsp;📅&nbsp;Fecha no seleccionada"/>
-        <input v-model="password" class="register__input" placeholder="Contraseña"/>
-        <input v-model="repeatPass" class="register__input" placeholder="Repetir contraseña" />
+        <input
+          v-model="name"
+          class="register__input"
+          placeholder="Nombre"
+        />
+        <input
+          v-model="phone"
+          class="register__input"
+          placeholder="Phone"
+        />
+        <input
+        v-model="date"
+        class="register__input--date"
+        type="datetime"
+        placeholder="&nbsp;📅&nbsp;Fecha no seleccionada"
+        />
+        <input
+        v-model="email"
+        id="email"
+        @blur="ValidateEmail"
+        class="register__input" placeholder="Correo electrónico"
+        />
+        <input
+        id="password"
+        v-model="password"
+        type="password"
+        class="register__input" placeholder="Contraseña"
+        />
+        <input
+        v-model="repeatPass"
+        type="password"
+        class="register__input"
+        placeholder="Repetir contraseña"
+        />
       <div class="register__actions">
         <button class="register__action--secondary">Volver</button>
         <button type="submit" class="register__action--primary">Crear cuenta</button>
+      </div>
+      <div>
+        <span class="form-output hidden" v-html="error"></span>
       </div>
     </form>
     <footer class="register__footer">Al registrar su cuenta, acepta nuestro <span>Contrato de servicio</span></footer>
@@ -22,20 +54,41 @@
 <script>
 export default {
   name: "Register",
-  props: {
-    onSubmit: Function
-  },
+  props: ['modalState','handleRegister'],
   methods: {
-    handleSubmit: function(event) {
-      if(this.password === this.repeatPass){
-        this.onSubmit({
+    handleSubmit: function() {
+      const { handleRegister } = this;
+      if(this.password === this.repeatPass && this.ValidateEmail(this.password)){
+        this.handleRegister({
           name: this.name,
           phone: this.phone,
-          date: this.date,
-          password: this.password
+          email: this.email
         })
       } else {
-        /** error de password */
+        document.querySelector("#password").style.borderBottom = "1px solid red";
+      }
+
+      this.modalState = {
+        register: false,
+        login: false,
+        open: false,
+        alert: true,
+        alertType: "user-created"
+      }
+
+    },
+    ValidateEmail() {
+      const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/
+
+      if (this.email == null || this.email === "") {
+        document.querySelector("#email").style.borderBottom = "1px solid red";
+        return false
+      } else if (!regex.test(this.email)) {
+        document.querySelector("#email").style.borderBottom = "1px solid red";
+        return false
+      } else {
+        document.querySelector("#email").style.borderBottom = "1px solid rgba(0, 0, 0, 0.1)";
+        return true
       }
     }
   }

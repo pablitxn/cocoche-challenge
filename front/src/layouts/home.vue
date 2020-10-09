@@ -32,19 +32,16 @@ export default {
     Gallery,
     Modal,
   },
-  props: ['cars'],
+  props: ['cars', 'handleRegister'],
   data(){
     return {
       modalState: {
         open: false,
         register: false,
-        login: false
-      }
-    }
-  },
-  methods: {
-    handleRegister: function(payload) {
-      console.log(payload)
+        login: false,
+        alert: false,
+        alertType: ""
+      },
     }
   }
 }

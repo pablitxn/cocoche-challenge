@@ -1,15 +1,14 @@
 <template>
   <div class="home">
     <!-- <Loading v-if="loading" /> -->
-    <HomeLayout v-if="cars" :cars="cars"/>
+    <HomeLayout v-if="cars" :cars="cars" :handleRegister="handleRegister"/>
   </div>
 </template>
 
 <script>
 import HomeLayout from "../layouts/home";
 import rentCarServices from "@/services/rent-car";
-// import authServices from "@/services/auth";
-
+import authServices from "../services/auth";
 
 export default {
   name: "HomeView",
@@ -17,13 +16,20 @@ export default {
     HomeLayout
   },
   data () {
+    async function handleRegister (payload) {
+      try {
+        const newUser = await authServices.register(payload)
+      } catch(err) {
+        console.log(err)
+      }
+    }
+
     return {
       loading: false,
       error: false,
-      cars: null
+      cars: null,
+      handleRegister: handleRegister
     }
-  },
-  computed: {
   },
   created () {
     this.loading = true;
