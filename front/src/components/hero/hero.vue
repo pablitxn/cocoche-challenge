@@ -19,7 +19,6 @@ export default {
     Search
   }
 }
-
 </script>
 
 <style lang="scss">
@@ -48,5 +47,4 @@ export default {
       justify-content: center;
     }
   }
-
 </style>

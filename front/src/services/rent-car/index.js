@@ -1,7 +1,6 @@
-// Constants
 import { BASE_URL } from "../../utils/constants";
 
-const Services = {
+const services = {
   getAllCars: async () => {
     try {
       const URL = `${BASE_URL}/get_all`
@@ -25,7 +24,6 @@ const Services = {
       console.log(err)
     }
   }
-
 }
 
-export default Services;
+export default services;

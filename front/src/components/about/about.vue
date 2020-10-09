@@ -26,12 +26,7 @@
   </div>
 </template>
 
-<script>
-/** */
-</script>
-
 <style lang="scss">
-
   .about {
     display: flex;
     justify-content: space-around;
@@ -66,5 +61,4 @@
       color: gray;
     }
   }
-
 </style>

@@ -53,7 +53,6 @@ export default {
     display: flex;
     justify-content: center;
   }
-
   .alert {
     margin-top: 2rem;
     width: 480px;

@@ -22,19 +22,7 @@ export default {
     Cards,
     Pagination
   },
-  props:['cars'],
-  data () {
-    const elementsPerPage = 8;
-    const totalPages = Math.ceil(this.cars.length / elementsPerPage);
-
-    return {
-      pagination: {
-        currentPage: 1,
-        prevPage: 0,
-        totalPages
-      },
-    }
-  }
+  props:['cars', 'pagination']
 }
 </script>
 

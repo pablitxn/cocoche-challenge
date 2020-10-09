@@ -6,7 +6,7 @@
     <main class="main">
         <Hero />
         <About />
-        <Gallery :cars="cars"/>
+        <Gallery :cars="cars" :pagination="pagination"/>
     </main>
     <footer class="footer">
       Cocoches 2020
@@ -24,6 +24,7 @@ import About from "../components/about/about";
 import Gallery from "../components/gallery/gallery";
 import Modal from "../components/_shared/auth-modal";
 import Alert from "../components/_shared/alert";
+import rentCarServices from "../services/rent-car"
 
 export default {
   name: "HomeLayout",
@@ -37,20 +38,39 @@ export default {
   },
   props: ['cars', 'handleRegister'],
   data(){
+    const elementsPerPage = 8;
+    const totalPages = Math.ceil(this.cars.length / elementsPerPage);
+
+    async function handlePagination(page) {
+      try {
+        console.log("pagination, ", page)
+        const data = await rentCarServices.getFordCars()
+      } catch(err) {
+        /** Alert  */
+        console.log(err)
+      }
+    }
+
     return {
       modalState: {
         open: false,
         register: false,
         login: false,
-        alert: true,
+        alert: false,
         alertType: "email-used"
+      },
+      pagination: {
+        handlePagination,
+        currentPage: 1,
+        prevPage: 0,
+        totalPages
       },
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
   body {
     margin: 0;
     background-color: #fafafa;
@@ -58,13 +78,12 @@ export default {
 
   .layout {
     padding: 0 3rem;
-  }
 
-  .main {
-    width: 100%;
-  }
+    & .main {
+      width: 100%;
+    }
 
-  .footer {
+    & .footer {
     width:100%;
     height: 5rem;
     display: flex;
@@ -72,4 +91,8 @@ export default {
     align-items: center;
     background-color: #ac909062;
   }
+  }
+
+
+
 </style>

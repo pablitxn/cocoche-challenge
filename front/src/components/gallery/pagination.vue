@@ -1,14 +1,12 @@
 <template>
   <div class="pagination">
     <ul :v-bind="pagination" v-for="(page, i) in pages" :key="i">
-      <li @click="handlePagination(i)">{{ i + 1 }}</li>
+      <li @click="pagination.handlePagination(i)">{{ i + 1 }}</li>
     </ul>
   </div>
 </template>
 
 <script>
-import services from "../../services/rent-car"
-
 export default {
   name: "Pagination",
   props: ['pagination', 'cars'],
@@ -19,15 +17,12 @@ export default {
     }
   },
   methods: {
-    async handlePagination(i) {
+      handlePagination(i) {
       const newPage = i;
       const prevPage = this.pagination.currentPage;
       /** New State */
       this.pagination.currentPage = newPage;
       this.pagination.prevPage = prevPage;
-      /** Refresh data  */
-      const newData = await services.getFordCars()
-      this.cars = newData;
     }
   }
 }

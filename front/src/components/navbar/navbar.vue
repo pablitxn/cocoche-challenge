@@ -1,13 +1,13 @@
 <template>
   <div class="navbar">
-    <img class="navbar__logo" src="https://web.archive.org/web/20180903011230im_/https://cocoche.com.ar/images/sin_letras.png" />
+    <img class="navbar__logo" src="https://web.archive.org/web/20180903011230im_/https://cocoche.com.ar/images/sin_letras.png" alt="logo"/>
     <div class="navbar__actions">
       <button class="navbar__action--highlighted">Publicar mi auto</button>
       <button class="navbar__action">Buscar un auto</button>
       <button class="navbar__action">Buscar en el mapa</button>
       <button class="navbar__action">Ayuda</button>
-      <button @click.prevent="handleModal" class="navbar__action" name="register" >Registrate</button>
-      <button @click.prevent="handleModal" class="navbar__action" name="login" >Iniciar sesión</button>
+      <button @click.prevent="handleModal" class="navbar__action" name="register">Registrate</button>
+      <button @click.prevent="handleModal" class="navbar__action" name="login">Iniciar sesión</button>
     </div>
   </div>
 </template>
@@ -35,7 +35,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -75,6 +74,4 @@ export default {
 
   }
 }
-
-
 </style>

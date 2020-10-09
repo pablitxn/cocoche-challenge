@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <!-- <Loading v-if="loading" /> -->
     <HomeLayout v-if="cars" :cars="cars" :handleRegister="handleRegister"/>
   </div>
 </template>
@@ -33,7 +32,6 @@ export default {
   },
   created () {
     this.loading = true;
-
     const getCars = async () => {
       try {
         const { data } = await rentCarServices.getFordCars()
@@ -46,13 +44,7 @@ export default {
         this.cars = null;
       }
     }
-
     getCars();
-
   }
 }
 </script>
-
-<style lang="scss">
-/** */
-</style>
