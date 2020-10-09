@@ -28,16 +28,8 @@ export default class Car {
 					imageUrl:`${API_IMAGES}/${car.url}`
 				}
 			})
-			/** Pagination */
-			const pages = pagination(dataFormated);
-			const pageByArray = page + 2
-			const response = pages[pageByArray];
-			if(response){
-				return response as ICarList
-			} else {
-				// Return page 0 by default
-				return pages[0] as ICarList
-			}
+
+			return dataFormated
 		} catch (err) {
 			this.logger.error(err)
 			throw err
@@ -63,18 +55,6 @@ export default class Car {
 					imageUrl:`${API_IMAGES}/${car.url}`
 				}
 			})
-			/** Pagination */
-			// const pages = pagination(dataFormated);
-			// const pageByArray = +page + 2
-			// const response = pages[pageByArray];
-			// console.log(`pag ${pageByArray}`, response)
-
-			// if(response){
-			// 	return response as ICarList
-			// } else {
-			// 	// Return page 0 by default
-			// 	return pages[0] as ICarList
-			// }
 
 			return dataFormated
 		} catch (err) {

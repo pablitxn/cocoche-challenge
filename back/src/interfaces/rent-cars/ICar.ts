@@ -5,7 +5,7 @@ export interface ICar {
   doors: number;
   cost:  number;
   url: string;
-  imageUrl: string;
+  imageUrl?: string;
   fuelType: string;
   description: string;
   modelDescription: string;

@@ -7,7 +7,7 @@ const User = new mongoose.Schema(
 	{
 		name: {
 			type: String,
-			required: [true, 'Please enter a full name'],
+			required: [true, 'Please enter a name'],
 		},
 		email: {
 			type: String,
@@ -17,7 +17,7 @@ const User = new mongoose.Schema(
 			index: true
 		},
 		phone: {
-			type: Number,
+			type: String,
 		},
 		createdAt: {
 			type: Date

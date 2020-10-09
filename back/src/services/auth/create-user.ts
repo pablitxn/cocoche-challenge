@@ -18,8 +18,7 @@ export default class Register {
 			return { id: _id, createdAt }
 		} catch (err) {
 			this.logger.error(err)
-			throw err
+			return { err }
 		}
 	}
-
 }

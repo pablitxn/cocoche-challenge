@@ -2,8 +2,6 @@
 import { Container } from 'typedi'
 // Logger
 import LoggerInstance from './logger'
-// Project Configs
-import config from 'config'
 
 export default ({
 	mongoConnection,

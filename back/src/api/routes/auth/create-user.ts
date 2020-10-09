@@ -15,15 +15,12 @@ export default (app: Router) => {
 		try {
 			const serviceInstance = Container.get(services)
 			const userCreated = await serviceInstance.createUser(req)
-
-			res.status(201).json({
-				data: userCreated,
-				message: 'user created'
-			})
+			userCreated.err
+			?	res.status(403).json({ error: userCreated.err })
+			:	res.status(201).json({ data: userCreated,	message: 'user created'	})
 		} catch (err) {
 			console.log(err)
 			throw err
 		}
 	})
-
 }
