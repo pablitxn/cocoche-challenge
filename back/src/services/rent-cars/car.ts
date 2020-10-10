@@ -7,7 +7,7 @@ import config from "../../config"
 // Utils
 import { pagination } from "../utils"
 // Types
-import { ICar, ICarList } from "../../interfaces/rent-cars"
+import { ICar } from "../../interfaces/rent-cars"
 import { Request } from "express"
 
 @Service()
@@ -17,7 +17,6 @@ export default class Car {
 	) {}
 
 	public async getAllCars(req: Request) {
-		const { params: { page } } = req;
     const { cococheAPI: API_URL, imagesURL: API_IMAGES } = config;
 		try {
 			const { data: { carList } } = await axios.get(API_URL)
@@ -37,7 +36,7 @@ export default class Car {
 	}
 
 	public async getFordCars(req: Request) {
-		const { params: { page } } = req;
+		const { page } = req.query;
     const { cococheAPI: API_URL, imagesURL: API_IMAGES } = config;
 		try {
 			const { data: { carList } } = await axios.get(API_URL)
@@ -55,8 +54,10 @@ export default class Car {
 					imageUrl:`${API_IMAGES}/${car.url}`
 				}
 			})
+			/** Pagination */
+			const pages = pagination(dataFormated, page)
 
-			return dataFormated
+			return pages
 		} catch (err) {
 			this.logger.error(err)
 			throw err

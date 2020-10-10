@@ -3,8 +3,6 @@ import dependencyInjectorLoader from './dependencyInjector'
 import mongooseLoader from './mongoose'
 import expressLoader from './express'
 import Logger from './logger'
-// Models
-import model from '../models/auth/user'
 
 const Loaders = async ({ expressApp }) => {
 	/** Mongo and Mongoose */
@@ -12,7 +10,10 @@ const Loaders = async ({ expressApp }) => {
 	Logger.info('DB connected successfully!')
 
 	/** User - Dependency Injection  **/
-	const userModel = { name: 'userModel', model }
+	const userModel = {
+		name: 'userModel',
+		model: require("../models/auth/user").default
+	}
 	await dependencyInjectorLoader({
 		mongoConnection,
 		models: [userModel]

@@ -11,7 +11,7 @@ const route = Router()
 export default (app: Router) => {
 	app.use('/', route)
 
-	route.get('/get_all/:page', async (req: Request, res: Response) => {
+	route.get('/get_all', async (req: Request, res: Response) => {
 		try {
 			const serviceInstance = Container.get(services)
 			const carList = await serviceInstance.getAllCars(req)
@@ -25,7 +25,7 @@ export default (app: Router) => {
 		}
 	})
 
-	route.get('/get_ford_cars/:page', async (req: Request, res: Response) => {
+	route.get('/get_ford_cars', async (req: Request, res: Response) => {
 		try {
 			const serviceInstance = Container.get(services)
 			const fordCars = await serviceInstance.getFordCars(req)

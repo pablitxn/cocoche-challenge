@@ -25,4 +25,17 @@ export default (app: Router) => {
 			throw err
 		}
 	})
+
+	route.post('/create_user', async (req: Request, res: Response) => {
+		try {
+			const serviceInstance = Container.get(services)
+			const userCreated = await serviceInstance.createUser(req)
+			userCreated.err
+			?	res.status(403).json({ error: userCreated.err })
+			:	res.status(201).json({ data: userCreated,	message: 'user created'	})
+		} catch (err) {
+			console.log(err)
+			throw err
+		}
+	})
 }
