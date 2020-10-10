@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    command: serve -s dist
+    ports:
+      - '5000:5000'
+  back:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    command: node build/app.js
+    ports:
+      - '4200:4200'
