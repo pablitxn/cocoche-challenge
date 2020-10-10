@@ -17,12 +17,6 @@
           placeholder="Phone"
         />
         <input
-        v-model="date"
-        class="register__input--date"
-        type="datetime"
-        placeholder="&nbsp;📅&nbsp;Fecha no seleccionada"
-        />
-        <input
         v-model="email"
         id="email"
         @blur="validateEmail"
@@ -58,10 +52,10 @@
 <script>
 export default {
   name: "Register",
-  props: ['modalState','handleRegister'],
+  props: ['handleModal', 'handleRegister'],
   methods: {
     handleSubmit: function() {
-      const { password, repeatPass, validateEmail,  } = this;
+      const { password, repeatPass, validateEmail } = this;
       if(password === repeatPass && validateEmail()){
         this.handleRegister({
           name: this.name,
@@ -69,22 +63,11 @@ export default {
           email: this.email
         })
       }
-
-      this.modalState = {
-        register: false,
-        login: false,
-        open: false,
-        alert: true,
-        alertType: "user-created"
-      }
     },
     validateEmail() {
       const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/
 
-      if (this.email == null || this.email === "") {
-        document.querySelector("#email").style.borderBottom = "1px solid red";
-        return false
-      } else if (!regex.test(this.email)) {
+      if (this.email == null || this.email === "" || !regex.test(this.email)) {
         document.querySelector("#email").style.borderBottom = "1px solid red";
         return false
       } else {

@@ -25,7 +25,6 @@
 </script>
 
 <style lang="scss">
-
 .search {
   display: flex;
   width: 80%;

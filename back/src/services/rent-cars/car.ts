@@ -55,7 +55,7 @@ export default class Car {
 				}
 			})
 			/** Pagination */
-			const pages = pagination(dataFormated, page)
+			const pages = pagination(dataFormated, page as string)
 
 			return pages
 		} catch (err) {

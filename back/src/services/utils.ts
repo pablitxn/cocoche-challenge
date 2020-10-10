@@ -13,7 +13,7 @@ export const pagination = (data: Array<any>, page: string) => {
         rowsPerPage,
         totalPages,
         currentPage: i + 1,
-        data: {...page}
+        data: [...page]
       })
     } else {
       let $i = i * rowsPerPage - totalItems
@@ -23,7 +23,7 @@ export const pagination = (data: Array<any>, page: string) => {
           rowsPerPage,
           totalPages,
           currentPage: i + 1,
-          data: {...page}
+          data: [page]
         })
     }
 };

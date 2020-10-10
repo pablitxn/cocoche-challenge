@@ -1,7 +1,7 @@
 <template>
   <div class="pagination">
     <ul :v-bind="pagination" v-for="(page, i) in pages" :key="i">
-      <li @click="pagination.handlePagination(i)">{{ i + 1 }}</li>
+      <li @click="handlePagination(i + 1)">{{ i + 1 }}</li>
     </ul>
   </div>
 </template>
@@ -9,20 +9,11 @@
 <script>
 export default {
   name: "Pagination",
-  props: ['pagination', 'cars'],
+  props: ['pagination', 'handlePagination'],
   data() {
     const pages = Array(this.pagination.totalPages)
     return {
       pages
-    }
-  },
-  methods: {
-      handlePagination(i) {
-      const newPage = i;
-      const prevPage = this.pagination.currentPage;
-      /** New State */
-      this.pagination.currentPage = newPage;
-      this.pagination.prevPage = prevPage;
     }
   }
 }

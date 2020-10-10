@@ -6,8 +6,8 @@
       <button class="navbar__action">Buscar un auto</button>
       <button class="navbar__action">Buscar en el mapa</button>
       <button class="navbar__action">Ayuda</button>
-      <button @click.prevent="handleModal" class="navbar__action" name="register">Registrate</button>
-      <button @click.prevent="handleModal" class="navbar__action" name="login">Iniciar sesión</button>
+      <button @click.prevent="onClick" class="navbar__action" name="register">Registrate</button>
+      <button @click.prevent="onClick" class="navbar__action" name="login">Iniciar sesión</button>
     </div>
   </div>
 </template>
@@ -15,18 +15,18 @@
 <script>
 export default {
   name: "Navbar",
-  props: ['modalState'],
+  props: ['handleModal'],
   methods: {
-    handleModal: function(event) {
+    onClick: function(event) {
       const { name } = event.target
       switch(name) {
         case "login":
-          this.modalState.open = true;
-          this.modalState.login = true;
+          this.handleModal.modalOpen = true;
+          this.handleModal.login = true;
           return
         case "register":
-          this.modalState.open = true;
-          this.modalState.register = true;
+          this.handleModal.modalOpen = true;
+          this.handleModal.register = true;
           return
       }
     }

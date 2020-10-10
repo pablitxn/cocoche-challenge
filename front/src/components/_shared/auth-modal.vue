@@ -1,12 +1,17 @@
 <template>
-  <div v-bind="modalState" v-if="modalState.open" class="paper-modal">
+  <div v-bind="handleModal" v-if="handleModal.modalOpen" class="paper-modal">
     <div class="modal">
       <div class="modal__action">
         <span @click.prevent="closeModal">X</span>
       </div>
       <div>
-        <LoginForm v-bind="modalState" v-if="modalState.login"/>
-        <RegisterForm v-bind="modalState" v-if="modalState.register" :handleRegister="handleRegister"/>
+        <LoginForm v-bind="handleModal" v-if="handleModal.login"/>
+        <RegisterForm
+          v-bind="handleModal"
+          v-if="handleModal.register"
+          :handleModal="handleModal"
+          :handleRegister="handleRegister"
+        />
       </div>
     </div>
   </div>
@@ -22,12 +27,12 @@ export default {
     LoginForm,
     RegisterForm
   },
-  props: ['modalState', 'handleRegister'],
+  props: ['handleModal', 'handleRegister'],
   methods: {
     closeModal: function(){
-      this.modalState.open = false;
-      this.modalState.register = false;
-      this.modalState.login = false;
+      this.handleModal.modalOpen = false;
+      this.handleModal.register = false;
+      this.handleModal.login = false;
       return
     }
   }

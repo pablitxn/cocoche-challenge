@@ -1,42 +1,25 @@
 <template>
-  <div v-bind="modalState" v-if="modalState.alert" class="paper-alert">
-    <div class="alert">
+  <div v-bind="handleAlert" v-if="handleAlert.alertOpen" class="paper-alert">
+    <div class="alert" id="alert">
       <div class="alert__action">
         <span @click.prevent="closeAlert">X</span>
       </div>
       <div class="alert__content">
-        <p>{{ handleMsg() }}</p>
+        <p>{{ handleAlert.message }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import LoginForm from "../auth/login-form";
-import RegisterForm from "../auth/register-form";
-
 export default {
   name: "modal",
-  components: {
-    LoginForm,
-    RegisterForm
-  },
-  props: ['modalState', 'handleRegister'],
+  props: ['handleAlert'],
   methods: {
     closeAlert: function() {
-      this.modalState.alert = false;
-      this.modalState.alertType = "";
+      this.handleAlert.alertOpen = false;
+      this.handleAlert.alertType = "";
       return
-    },
-    handleMsg: function() {
-      switch(this.modalState.alertType) {
-        case "email-used":
-          return "Este correo ya tiene una cuenta asociada, ¿Desea recuperar su contraseña?"
-        case "error-fetch":
-          return "No se pudieron recuperar datos, por favor aguarde un momento."
-        case "success":
-          return "La cuenta fue creada. Revisá tu email para validarla."
-      }
     }
   }
 }
@@ -45,11 +28,11 @@ export default {
 <style lang="scss">
   .paper-alert {
     width: 100vw;
-    height: 100vh;
+    height: 30vh;
     background-color: rgba($color: #000000, $alpha: 0);
     position: fixed;
     top:0;
-    z-index: 4;
+    z-index: 1;
     display: flex;
     justify-content: center;
   }
@@ -57,7 +40,7 @@ export default {
     margin-top: 2rem;
     width: 480px;
     height: 130px;
-    background-color: #91d8f8;
+    background-color: #a0d12e;
 
     &__action {
       display: flex;

@@ -7,7 +7,7 @@
       <Cards :cars="cars" />
     </section>
     <div class="gallery__pagination">
-      <Pagination :pagination="pagination" :cars="cars" />
+      <Pagination :pagination="pagination" :handlePagination="handlePagination" :cars="cars" />
     </div>
   </div>
 </template>
@@ -22,12 +22,11 @@ export default {
     Cards,
     Pagination
   },
-  props:['cars', 'pagination']
+  props:['cars', 'pagination', 'handlePagination']
 }
 </script>
 
 <style lang="scss">
-
   .gallery{
     display: flex;
     flex-direction: column;

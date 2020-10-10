@@ -13,9 +13,9 @@ const services = {
     }
   },
 
-  getFordCars: async () => {
+  getFordCars: async (page = 1) => {
     try {
-      const URL = `${BASE_URL}/get_ford_cars/1`
+      const URL = `${BASE_URL}/get_ford_cars/?page=${page}`
       const response = await fetch(URL);
       const cars = await response.json()
 
